@@ -177,7 +177,38 @@ elif page == "資料展示":
     st.title("📁 資料與成果")
 
     st.subheader("📋 資料預覽")
-    st.dataframe(df.head(15), use_container_width=True)
+
+# --- 建立 target（如果不存在）---
+    display_df = df.copy()
+
+    if 'target' not in display_df.columns:
+        if 'classification' in display_df.columns:
+            display_df['target'] = display_df['classification'].apply(
+                lambda x: 1 if str(x).lower() == 'ckd' else 0
+            )
+        else:
+            display_df['target'] = None  # 避免報錯
+
+    # --- 欄位順序 ---
+    selected_cols = [
+        'age',
+        'bmi',
+        'systolic_bp',
+        'diastolic_bp',
+        'serum_creatinine',
+        'diabetes',
+        'hypertension',
+        'target'
+    ]
+
+    # --- 過濾存在欄位（避免 crash）---
+    available_cols = [col for col in selected_cols if col in display_df.columns]
+
+    # --- 顯示 ---
+    st.dataframe(
+        display_df[available_cols].head(20),
+        use_container_width=True
+    )
 
     st.divider()
 
@@ -211,5 +242,4 @@ elif page == "資料展示":
         except:
             st.warning("圖片不存在")
 
-        st.caption("（點擊圖片可放大查看）")
         st.divider()
