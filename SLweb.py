@@ -206,7 +206,7 @@ elif page == "資料展示":
 
     # --- 顯示 ---
     st.dataframe(
-        display_df[available_cols].head(20),
+        display_df[available_cols].head(200),
         use_container_width=True
     )
 
