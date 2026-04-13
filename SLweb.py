@@ -184,12 +184,12 @@ elif page == "資料展示":
     st.subheader("🖼️ 分析成果")
 
     image_paths = [
-        "./screenshot/1.png",
-        "./screenshot/2.png",
-        "./screenshot/3.png",
-        "./screenshot/4.png",
-        "./screenshot/5.png",
-        "./screenshot/6.png"
+        "./screenshot/001.png",
+        "./screenshot/002.png",
+        "./screenshot/003.png",
+        "./screenshot/004.png",
+        "./screenshot/005.png",
+        "./screenshot/006.png"
     ]
 
     titles = [
