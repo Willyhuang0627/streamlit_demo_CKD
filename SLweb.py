@@ -245,12 +245,17 @@ elif page == "📁 資料與成果展示":
         "圖6：BMI指標對CKD的影響"
     ]
 
+for row in range(0, len(image_paths), 3):
+
     cols = st.columns(3)
 
-    for i, img_path in enumerate(image_paths):
-        with cols[i % 3]:
-            try:
-                st.markdown(f"**{titles[i]}**")  # ⭐ 標題在上（專業）
-                st.image(img_path, use_container_width=True)
-            except:
-                st.warning(f"⚠️ 找不到 {img_path}")
+    for col_idx in range(3):
+        i = row + col_idx
+
+        if i < len(image_paths):
+            with cols[col_idx]:
+                try:
+                    st.markdown(f"**{titles[i]}**")
+                    st.image(image_paths[i], use_container_width=True)
+                except:
+                    st.warning(f"⚠️ 找不到 {image_paths[i]}")
