@@ -122,17 +122,25 @@ if page == "Dashboard":
         # 圖表（手機自動直排🔥）
         st.markdown("### 📈 資料分析")
 
+        st.markdown("#### 📊 圖1：年齡分佈分析")
+
         fig, ax = plt.subplots()
         sns.histplot(df['age'], kde=True, ax=ax)
         fig.tight_layout()
         st.pyplot(fig)
         plt.close(fig)
 
+        st.caption("📌 多數樣本集中於中高齡族群，顯示CKD風險與年齡具有高度關聯性")
+
+        st.markdown("#### 📊 圖2：年齡與腎功能關聯")
+
         fig, ax = plt.subplots()
         sns.regplot(data=df, x='age', y='serum_creatinine', ax=ax)
         fig.tight_layout()
         st.pyplot(fig)
         plt.close(fig)
+
+        st.caption("📌 隨著年齡增加，肌酸酐呈現上升趨勢，反映腎功能可能隨年齡退化")
 
     # =====================
     # 🧠 Tab2 預測
@@ -226,10 +234,10 @@ elif page == "資料展示":
     titles = [
         "圖1：系統總覽",
         "圖2：資料分佈",
-        "圖3：關聯分析",
-        "圖4：模型預測",
-        "圖5：特徵分析",
-        "圖6：結論"
+        "圖3：生理指標 vs CKD",
+        "圖4：高低風險族群分析",
+        "圖5：年齡對CKD的影響",
+        "圖6：BMI指標對CKD的影響"
     ]
 
     # ⭐ 手機優化排列（關鍵🔥）
